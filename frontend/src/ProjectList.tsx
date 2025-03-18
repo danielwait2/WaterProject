@@ -1,5 +1,6 @@
 import { Project } from './types/project.ts';
 import { useEffect, useState } from 'react';
+import CookieConsent from 'react-cookie-consent';
 
 function ProjectList() {
     const [projects, setProjects] = useState<Project[]>([]);
