@@ -1,31 +1,28 @@
-import CookieConsent from 'react-cookie-consent';
 import './App.css';
-import ProjectList from './ProjectList';
-import CategoryFilter from './CategoryFiler';
-import WelcomeBand from './WelcomeBand';
-import { useState } from 'react';
-
+import { CartProvider } from './context/CartContext';
+import CartPage from './pages/CartPage';
+import DonatePage from './pages/DonatePage';
+import ProjectsPage from './pages/ProjectPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// router is general
+//routes hold the route definition
+// route is a specific route
 function App() {
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
     return (
         <>
-            <div className="container mt-4">
-                <div className="row bg-primary text-white">
-                    <WelcomeBand />
-                </div>
-                <div className="row">
-                    <div className="col-md-3">
-                        <CategoryFilter selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories}/>
-                    </div>
-                    <div className="col-md-9">
-                        <ProjectList selectedCategories={selectedCategories}/>
-                    </div>
-                </div>
-            </div>
-            <CookieConsent>
-                This website uses cookies to enhance the user experience.
-            </CookieConsent>
+            <CartProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<ProjectsPage />} />
+                        <Route path="/projects" element={<ProjectsPage />} />
+                        <Route path="/cart" element={<CartPage />} />
+                        <Route
+                            path="/donate/:projectName/:projectId"
+                            element={<DonatePage />}
+                        />
+                    </Routes>
+                </Router>
+            </CartProvider>
         </>
     );
 }
