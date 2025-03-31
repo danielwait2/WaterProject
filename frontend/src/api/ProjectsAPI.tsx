@@ -17,10 +17,7 @@ export const fetchProjects = async (
         .map((cat: any) => `projectTypes=${encodeURIComponent(cat)}`)
         .join('&');
         const response = await fetch(
-            `${API_URL}/Water/AllProjects?pageSize=${pageSize}&pageNumber=${pageNumber}${selectedCategories.length > 0 ? `&${categoryParams}` : ''}`,
-            {
-                credentials: 'include',
-            }
+            `${API_URL}/Water/AllProjects?pageSize=${pageSize}&pageNumber=${pageNumber}${selectedCategories.length > 0 ? `&${categoryParams}` : ''}`
         );    
     if (!response.ok){
         throw new Error('Failed to fetch projects');
