@@ -1,6 +1,5 @@
 import { Project } from '../types/project.ts';
 import { useEffect, useState } from 'react';
-import CookieConsent from 'react-cookie-consent';
 import { useNavigate } from 'react-router-dom';
 import { fetchProjects } from '../api/ProjectsAPI.tsx';
 import Pagination from './Pagination.tsx';
