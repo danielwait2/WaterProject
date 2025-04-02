@@ -17,9 +17,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
-            .AllowCredentials()
+        policy.WithOrigins("http://localhost:3000","https://white-grass-03bfb491e.6.azurestaticapps.net", "https://white-grass-03bfb491e.6.azurestaticapps.net")
             .AllowAnyHeader()
+            .AllowCredentials()
             .AllowAnyMethod();
     });
 });
